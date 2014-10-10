@@ -17,7 +17,7 @@ This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern 
 The shortcode displays lists of your events.  You can control the event display with the shortcode options. 
 Example shortcode to show next 8 events in the category festival in ASC order with date showing [ecs-list-events cat='festival' limit='8']
 
-Shortcode Options:
+= Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
 * cat - Represents event category. [ecs-list-events cat='festival']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
@@ -52,30 +52,6 @@ The plugin does not include styling. Events are listed in ul li tags with approp
 * event title link is H4 class="entry-title summary" 
 * date class is duration 
 * button .ecs-all-events 
-
-Here is some sample css - you will need to make adjustments to suit  your theme.
-
-/*The Events Calendar Shortcode */
-.summary a{ /*The event title this is an h4 */
-	font-size: 0.875em;
-	font-weight:600;
-	line-height:  0.875em;
-}
-.duration,
-.venue{ /*The date and the venue */
-	font-size:small;
-}
-.ecs-event-list { /*The ul*/
-  padding:0!important;
-}
-.ecs-event { /*The li */
-	border-bottom: thin solid #E4E9F4;
-	list-style-type: none;
-}
-.ecs-all-events { /*The button View All Events */
-  margin: 0;
-  font-size:small;
-}
 
 = How do I include a list of events in a page template? =
 include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
