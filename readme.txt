@@ -37,6 +37,15 @@ If you like this plugin please rate it on WordPress.org
 
 == Frequently Asked Questions ==
 
+= What are the shortcode Options: =
+* Basic shortcode: [ecs-list-events]
+* cat - Represents event category. [ecs-list-events cat='festival']
+* limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
+* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
+* date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
+* message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
+* viewall - Determines whether to show 'View all events' button or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
+
 = How do I use this shortcode in a widget? =
 
 * You can put the shortcode in a text widget.
