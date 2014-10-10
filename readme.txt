@@ -1,0 +1,91 @@
+=== The Events Calendar Shortcode ===
+Contributors:  dandelionweb, ankitpokhrel
+Tags: event, events, calendar, shortcode, modern tribe
+Requires at least: 3.0
+Tested up to: 4.0
+Stable tag: trunk
+Version: 1.0.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Adds shortcode functionality to The Events Calendar Plugin (Free Version) by Modern Tribe.
+
+== Description ==
+
+This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern Tribe). 
+
+The shortcode displays lists of your events.  You can control the event display with the shortcode options. 
+Example shortcode to show next 8 events in the category festival in ASC order with date showing [ecs-list-events cat='festival' limit='8']
+
+Shortcode Options:
+* Basic shortcode: [ecs-list-events]
+* cat - Represents event category. [ecs-list-events cat='festival']
+* limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
+* order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
+* date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
+* message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
+* viewall - Determines whether to show 'View all events' button or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
+
+If you like this plugin please rate it on WordPress.org
+
+== Installation ==
+
+1. Install The Events Calendar Shortcode Plugin from the WordPress.og repository or by uploading the-events-calendar-shortcode folder to the /wp-content/plugins directory. You must also install The Event Calendar Plugin by Modern Tribe and add your events to the calendar.
+
+2. Activate the plugin through the Plugins menu in WordPress
+
+
+== Frequently Asked Questions ==
+
+= How do I use this shortcode in a widget? =
+
+* You can put the shortcode in a text widget.
+* Not all themes support use of a shortcode in a widget. If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
+
+
+= What are the classes for styling the list of events? =
+
+The plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling.
+
+* ul class="ecs-event-list"
+* li class="ecs-event"
+* event title link is H4 class="entry-title summary" 
+* date class is duration 
+* button .ecs-all-events 
+
+Here is some sample css - you will need to make adjustments to suit  your theme.
+
+/*The Events Calendar Shortcode */
+.summary a{ /*The event title this is an h4 */
+	font-size: 0.875em;
+	font-weight:600;
+	line-height:  0.875em;
+}
+.duration,
+.venue{ /*The date and the venue */
+	font-size:small;
+}
+.ecs-event-list { /*The ul*/
+  padding:0!important;
+}
+.ecs-event { /*The li */
+	border-bottom: thin solid #E4E9F4;
+	list-style-type: none;
+}
+.ecs-all-events { /*The button View All Events */
+  margin: 0;
+  font-size:small;
+}
+
+= How do I include a list of events in a page template? =
+include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
+
+== Upgrade Notice ==
+
+= 1 =
+* Initial Release
+
+== Changelog ==
+
+= 1 =
+* Initial release
