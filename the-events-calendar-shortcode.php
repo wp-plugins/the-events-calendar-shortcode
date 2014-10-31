@@ -115,7 +115,7 @@ class Events_Calendar_Shortcode
 			$output .= '</ul>';
 
 			if( $ecs_viewall !== 'false' ) {
-				$output .= '<button class="ecs-all-events"><a href="' . tribe_get_events_link() . '" rel="bookmark">' . translate( 'View All Events', 'tribe-events-calendar' ) . '</a></button>';
+				$output .= '<span class="ecs-all-events"><a href="' . tribe_get_events_link() . '" rel="bookmark">' . translate( 'View All Events', 'tribe-events-calendar' ) . '</a></span>';
 			}
 
 		} else { //No Events were Found
