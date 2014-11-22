@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: http://dandelionwebdesign.com/downloads/shortcode-modern-tribe/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.0.1
+ Version: 1.0.2
  Author: Dandelion Web Design Inc.
  Author URI: http://dandelionwebdesign.com
  License: GPL2 or later
@@ -67,10 +67,11 @@ class Events_Calendar_Shortcode
 		extract( shortcode_atts( array(
 			'cat' => '',
 			'limit' => 5,
-			'eventdetails' => true,
+			'eventdetails' => 'true',
+			'venue' => 'false',
 			'message' => 'There are no upcoming events at this time.',
 			'order' => 'ASC',
-			'viewall' => false,			
+			'viewall' => 'false',			
 		), $atts, 'ecs-list-events' ), EXTR_PREFIX_ALL, 'ecs' );
 
 		if ($ecs_cat) {
@@ -108,7 +109,11 @@ class Events_Calendar_Shortcode
 				$output .= '<li class="ecs-event">';
 					$output .= '<h4 class="entry-title summary"><a href="' . tribe_get_event_link() . '" rel="bookmark">' . get_the_title() . '</a></h4>';
 				if( $ecs_eventdetails !== 'false' ) {	
-					$output .= '<span class="duration venue">' . tribe_events_event_schedule_details() . '</span>';
+					$output .= '<span class="duration time">' . tribe_events_event_schedule_details() . '</span>';
+				}
+
+				if( $ecs_venue !== 'false' ) {
+					$output .= '<span class="duration venue"><em> at </em>' . tribe_get_venue() . '</span>';	
 				}
 				$output .= '</li>';
 			endforeach;
