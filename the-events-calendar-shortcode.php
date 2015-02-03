@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: http://dandelionwebdesign.com/downloads/shortcode-modern-tribe/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.0.5
+ Version: 1.0.6
  Author: Dandelion Web Design Inc.
  Author URI: http://dandelionwebdesign.com
  License: GPL2 or later
@@ -31,7 +31,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.0.5';
+	const VERSION = '1.0.6';
 
 	/**
 	 * Constructor. Hooks all interactions to initialize the class.
@@ -107,7 +107,7 @@ class Events_Calendar_Shortcode
 
 		if ($posts) {
 
-			$output .= '';
+			$output .= '<ul class="ecs-event-list">';
 			foreach( $posts as $post ) :
 				setup_postdata( $post );
 				$output .= '<li class="ecs-event">';
@@ -141,7 +141,7 @@ class Events_Calendar_Shortcode
 					}
 				$output .= '</li>';
 			endforeach;
-			$output .= '';
+			$output .= '</ul>';
 
 			if( self::isValid($ecs_viewall) ) {
 				$output .= '<span class="ecs-all-events"><a href="' . tribe_get_events_link() . '" rel="bookmark">' . translate( 'View All Events', 'tribe-events-calendar' ) . '</a></span>';

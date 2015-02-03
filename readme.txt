@@ -4,7 +4,7 @@ Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: trunk
-Version: 1.0.5
+Version: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,8 @@ include echo do_shortcode("[ecs-list-events]"); in the template where you want t
 * Add venue to shortcode - Thanks to ankitpokhrel
 = 1.0.5 =
 * Add excerpt and thumbnail - Thanks to ankitpokhrel
+= 1.0.6 =
+Fix missing ul
 
 == Changelog ==
 = 1 =
@@ -94,3 +96,5 @@ include echo do_shortcode("[ecs-list-events]"); in the template where you want t
 * Add venue to shortcode  - Thanks to ankitpokhrel
 = 1.0.5 =
 * Add excerpt and thumbnail - Thanks to ankitpokhrel
+= 1.0.6 =
+Fix missing ul
