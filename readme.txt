@@ -44,15 +44,17 @@ If you like this plugin please rate it on WordPress.org
 == Frequently Asked Questions ==
 
 = What are the shortcode Options: =
+= Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
 * cat - Represents event category. [ecs-list-events cat='festival']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
 * venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
-* excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt=''] //displays excerpt with length 100 
+* excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt='true'] //displays excerpt with length 100 
  excerpt='300' //displays excerpt with length 300
-* thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings. You can use 2 other attributes: thumbwidth (350) and thumbheight (350) to provide thumbnail dimension.
+* thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings. 
+* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size [ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
 
