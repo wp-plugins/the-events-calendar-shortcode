@@ -4,7 +4,7 @@ Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
 Tested up to: 4.1
 Stable tag: trunk
-Version: 1.0.2
+Version: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,13 +24,12 @@ Example shortcode to show next 8 events in the category festival in ASC order wi
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
 * venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
+* excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt='true'] //displays excerpt with length 100 
+ excerpt='300' //displays excerpt with length 300
+* thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings. 
+* You can use 2 other attributes: thumbwidth and thumbheight to customize the thumbnail size [ecs-list-events thumb='true' thumbwidth='150' thumbheight='150']
 * message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
 * viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
-
-COMING SOON
-* excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt=''] //displays excerpt with length 100 
- excerpt='300' //displays excerpt with length 300
-* thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings. You can use 2 other attributes: thumbwidth (350) and thumbheight (350) to provide thumbnail dimension.
 
 
 If you like this plugin please rate it on WordPress.org
@@ -51,14 +50,11 @@ If you like this plugin please rate it on WordPress.org
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
 * venue - To show or hide the venue. Value can be 'true' or 'false'. Default is false. [ecs-list-events venue='true']
-* message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
-* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
-
-COMING SOON
 * excerpt - To show or hide the excerpt and set excerpt length. Default is false. [ecs-list-events excerpt=''] //displays excerpt with length 100 
  excerpt='300' //displays excerpt with length 300
 * thumb - To show or hide thumbnail image. Default is false. [ecs-list-events thumb='true'] //displays post thumbnail in default thumbnail dimension from media settings. You can use 2 other attributes: thumbwidth (350) and thumbheight (350) to provide thumbnail dimension.
-
+* message - Message to show when there are no events. Defaults to 'There are no upcoming events at this time.'
+* viewall - Determines whether to show 'View all events' or not. Values can be 'true' or 'false'. Default to 'true' [ecs-list-events cat='festival' limit='3' order='DESC' viewall='false']
 
 = How do I use this shortcode in a widget? =
 
@@ -73,9 +69,11 @@ The plugin does not include styling. Events are listed in ul li tags with approp
 * date class is time 
 * venue class is venue 
 * span .ecs-all-events 
+* p .ecs-excerpt
 
 = How do I include a list of events in a page template? =
 include echo do_shortcode("[ecs-list-events]"); in the template where you want the events list to display.
+
 == Upgrade Notice ==
 = 1 =
 * Initial Release
@@ -83,7 +81,8 @@ include echo do_shortcode("[ecs-list-events]"); in the template where you want t
 * Fix Firefox browser compatibility issue
 = 1.0.2 =
 * Add venue to shortcode - Thanks to ankitpokhrel
-* REVERTING due to error adding excerpt and thumbnail 
+= 1.0.5 =
+* Add excerpt and thumbnail - Thanks to ankitpokhrel
 
 == Changelog ==
 = 1 =
@@ -91,4 +90,5 @@ include echo do_shortcode("[ecs-list-events]"); in the template where you want t
 * Fix Firefox browser compatibility issue
 = 1.0.2 =
 * Add venue to shortcode  - Thanks to ankitpokhrel
-* REVERTING due to error adding excerpt and thumbnail 
+= 1.0.5 =
+* Add excerpt and thumbnail - Thanks to ankitpokhrel

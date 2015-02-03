@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: http://dandelionwebdesign.com/downloads/shortcode-modern-tribe/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.0.2
+ Version: 1.0.5
  Author: Dandelion Web Design Inc.
  Author URI: http://dandelionwebdesign.com
  License: GPL2 or later
@@ -31,7 +31,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.0.2';
+	const VERSION = '1.0.5';
 
 	/**
 	 * Constructor. Hooks all interactions to initialize the class.
@@ -51,7 +51,7 @@ class Events_Calendar_Shortcode
 	 * @param  array $atts 	shortcode attributes
 	 * @return string 	shortcode output
 	 */
-	public function ecs_fetch_events($atts)
+	public function ecs_fetch_events( $atts )
 	{
 		/**
 		 * Check if events calendar plugin method exists
@@ -61,7 +61,7 @@ class Events_Calendar_Shortcode
 		}
 
 		global $wp_query, $post;
-		$output='';
+		$output = '';
 		$ecs_event_tax = '';
 
 		extract( shortcode_atts( array(
@@ -71,7 +71,11 @@ class Events_Calendar_Shortcode
 			'venue' => 'false',
 			'message' => 'There are no upcoming events at this time.',
 			'order' => 'ASC',
-			'viewall' => 'false',			
+			'viewall' => 'false',
+			'excerpt' => 'false',
+			'thumb' => 'false',
+			'thumbwidth' => '',
+			'thumbheight' => ''
 		), $atts, 'ecs-list-events' ), EXTR_PREFIX_ALL, 'ecs' );
 
 		if ($ecs_cat) {
@@ -101,25 +105,45 @@ class Events_Calendar_Shortcode
 								)
 		) );
 
-		if ($posts && !$no_upcoming_events) {
+		if ($posts) {
 
-			$output .= '<ul class="ecs-event-list">';
+			$output .= '';
 			foreach( $posts as $post ) :
 				setup_postdata( $post );
 				$output .= '<li class="ecs-event">';
-					$output .= '<h4 class="entry-title summary"><a href="' . tribe_get_event_link() . '" rel="bookmark">' . get_the_title() . '</a></h4>';
-				if( $ecs_eventdetails !== 'false' ) {	
-					$output .= '<span class="duration time">' . tribe_events_event_schedule_details() . '</span>';
-				}
-
-				if( $ecs_venue !== 'false' ) {
-					$output .= '<span class="duration venue"><em> at </em>' . tribe_get_venue() . '</span>';	
-				}
+					$output .= '<h4 class="entry-title summary">' .
+									'<a href="' . tribe_get_event_link() . '" rel="bookmark">' . get_the_title() . '</a>
+								</h4>';
+			
+					if( self::isValid($ecs_thumb) ) {
+						$thumbWidth = is_numeric($ecs_thumbwidth) ? $ecs_thumbwidth : '';
+						$thumbHeight = is_numeric($ecs_thumbheight) ? $ecs_thumbheight : '';
+						if( !empty($thumbWidth) && !empty($thumbHeight) ) {
+							$output .= get_the_post_thumbnail(get_the_ID(), array($thumbWidth, $thumbHeight) );
+						} else {
+							$output .= get_the_post_thumbnail(get_the_ID(), 'medium');
+						}
+					}
+			
+					if( self::isValid($ecs_excerpt) ) {
+						$excerptLength = is_numeric($ecs_excerpt) ? $ecs_excerpt : 100;
+						$output .= '<p class="ecs-excerpt">' . 
+										self::get_excerpt($excerptLength) . 
+									'</p>';
+					}
+			
+					if( self::isValid($ecs_eventdetails) ) {	
+						$output .= '<span class="duration time">' . tribe_events_event_schedule_details() . '</span>';
+					}
+			
+					if( self::isValid($ecs_venue) ) {
+						$output .= '<span class="duration venue"><em> at </em>' . tribe_get_venue() . '</span>';	
+					}
 				$output .= '</li>';
 			endforeach;
-			$output .= '</ul>';
+			$output .= '';
 
-			if( $ecs_viewall !== 'false' ) {
+			if( self::isValid($ecs_viewall) ) {
 				$output .= '<span class="ecs-all-events"><a href="' . tribe_get_events_link() . '" rel="bookmark">' . translate( 'View All Events', 'tribe-events-calendar' ) . '</a></span>';
 			}
 
@@ -130,6 +154,43 @@ class Events_Calendar_Shortcode
 		wp_reset_query();
 
 		return $output;
+	}
+
+	/**
+	 * Checks if the plugin attribute is valid
+	 *
+	 * @since 1.0.5
+	 * 
+	 * @param string $prop
+	 * @return boolean
+	 */
+	private function isValid( $prop ) 
+	{
+		return ($prop !== 'false');
+	}
+
+	/**
+	 * Fetch and trims the excerpt to specified length
+	 *
+	 * @param integer $limit Characters to show
+	 * @param string $source  content or excerpt
+	 *
+	 * @return string
+	 */
+	private function get_excerpt( $limit, $source = null )
+	{
+		$excerpt = get_the_excerpt();
+		if( $source == "content" ) {
+			$excerpt = get_the_content();
+		}
+
+		$excerpt = preg_replace(" (\[.*?\])", '', $excerpt);
+		$excerpt = strip_tags( strip_shortcodes($excerpt) );
+		$excerpt = substr($excerpt, 0, $limit);
+		$excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
+		$excerpt .= '...';
+
+		return $excerpt;
 	}
 }
 
