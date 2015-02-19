@@ -63,9 +63,11 @@ class Events_Calendar_Shortcode
 		global $wp_query, $post;
 		$output = '';
 		$ecs_event_tax = '';
+		$ecs_event_tag = '';
 
 		extract( shortcode_atts( array(
 			'cat' => '',
+			'tag' => '',
 			'limit' => 5,
 			'eventdetails' => 'true',
 			'venue' => 'false',
@@ -88,10 +90,24 @@ class Events_Calendar_Shortcode
 			);
 		}
 
+		if ($ecs_tag) {
+			$ecs_event_tag = array(
+				array(
+					'taxonomy' => 'post_tag',
+					'field' => 'slug',
+					'terms' => $ecs_tag
+				)
+			);
+		}
+
 		$posts = get_posts( array(
 				'post_type' => 'tribe_events',
 				'posts_per_page' => $ecs_limit,
-				'tax_query'=> $ecs_event_tax,
+				'tax_query'=> array(
+					'relation' => 'AND',
+					$ecs_event_tax,
+					$ecs_event_tag,
+				),
 				'meta_key' => '_EventEndDate',
 				'orderby' => 'meta_value',
 				'order' => $ecs_order,
