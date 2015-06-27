@@ -1,5 +1,6 @@
 === The Events Calendar Shortcode ===
 Contributors:  dandelionweb, ankitpokhrel,sujin2f
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JEMTB4U8SYFL6
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 3.0
 Tested up to: 4.2.2
@@ -16,6 +17,9 @@ This plugin adds a shortcode for use with The Events Calendar Plugin (by Modern 
 
 The shortcode displays lists of your events.  You can control the event display with the shortcode options.
 Example shortcode to show next 8 events in the category festival in ASC order with date showing [ecs-list-events cat='festival' limit='8']
+
+= Donations: =
+Yes, I appreciate all donations, no matter the size. Further development of this plugin is not contingent on donations, but they are always a nice incentive.
 
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
