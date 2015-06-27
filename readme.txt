@@ -19,7 +19,7 @@ The shortcode displays lists of your events.  You can control the event display 
 Example shortcode to show next 8 events in the category festival in ASC order with date showing [ecs-list-events cat='festival' limit='8']
 
 = Donations: =
-Yes, I appreciate all donations, no matter the size. Further development of this plugin is not contingent on donations, but they are always a nice incentive.
+I appreciate all donations, no matter the size. Further development of this plugin is not contingent on donations, but they are a nice incentive. To donate click on the donation to this plugin button in the sidebar below the Authors.
 
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
