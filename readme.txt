@@ -76,6 +76,7 @@ If you like this plugin please rate it on WordPress.org
 
 = What are the classes for styling the list of events? =
 The plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling.
+
 * ul class="ecs-event-list"
 * li class="ecs-event"
 * event title link is H4 class="entry-title summary"
