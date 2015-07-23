@@ -23,7 +23,8 @@ I appreciate all donations, no matter the size. Further development of this plug
 
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
-* cat - Represents event category. [ecs-list-events cat='festival, workshops’]
+* cat - Represents single event category. [ecs-list-events cat='festival’]
+* cats - Use plural when you want multiple categories [ecs-list-events cats='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
@@ -53,7 +54,8 @@ If you like this plugin please rate it on WordPress.org
 = What are the shortcode Options: =
 = Shortcode Options: =
 * Basic shortcode: [ecs-list-events]
-* cat - Represents event category. [ecs-list-events cat='festival, workshops']
+* cat - Represents event category. [ecs-list-events cat='festival']
+* cats - Use plural when you want multiple categories [ecs-list-events cats='festival, workshops']
 * limit - Total number of events to show. Default is 5. [ecs-list-events limit='3']
 * order - Order of the events to be shown. Value can be 'ASC' or 'DESC'. Default is 'ASC'. Order is based on event date. [ecs-list-events order='DESC']
 * date - To show or hide date. Value can be 'true' or 'false'. Default is true. [ecs-list-events eventdetails='false']
