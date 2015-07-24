@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: http://dandelionwebdesign.com/downloads/shortcode-modern-tribe/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.0.9
+ Version: 1.0.10
  Author: Dandelion Web Design Inc.
  Author URI: http://dandelionwebdesign.com
  Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
@@ -24,7 +24,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @package events-calendar-shortcode
  * @author Dandelion Web Design Inc.
- * @version 1.0.9
+ * @version 1.0.10
  */
 class Events_Calendar_Shortcode
 {
@@ -33,7 +33,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.0.9';
+	const VERSION = '1.0.10';
 
 	/**
 	 * Constructor. Hooks all interactions to initialize the class.
@@ -88,12 +88,23 @@ class Events_Calendar_Shortcode
 
 		// Category
 		if ( $ecs_cat ) {
-			$ecs_cats = explode( ",", $ecs_cat );
-			$ecs_cats = array_map( 'trim', $ecs_cats );
+			if ( strpos( $ecs_cat, "," ) !== false ) {
+				$ecs_cats = explode( ",", $ecs_cat );
+				$ecs_cats = array_map( 'trim', $ecs_cats );
+			} else {
+				$ecs_cats = $ecs_cat;
+			}
+
 			$ecs_event_tax = array(
+				'relation' => 'OR',
 				array(
 					'taxonomy' => 'tribe_events_cat',
 					'field' => 'name',
+					'terms' => $ecs_cats,
+				),
+				array(
+					'taxonomy' => 'tribe_events_cat',
+					'field' => 'slug',
 					'terms' => $ecs_cats,
 				)
 			);
